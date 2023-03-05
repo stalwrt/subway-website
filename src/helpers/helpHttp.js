@@ -5,16 +5,15 @@ export const helpHttp = () => {
 		};
 
 		const controller = new AbortController();
-		options.signal = controller.signal();
+		options.signal = controller.signal;
 
 		options.method = options.method || 'GET';
-
 		options.headers = options.headers ? { ...defaultHeader, ...options.headers } : defaultHeader;
 
 		options.body = JSON.stringify(options.body) || false;
 		if (!options.body) delete options.body;
 
-		console.log(options);
+		//console.log(options);
 		setTimeout(() => controller.abort(), 3000);
 
 		return fetch(endpoint, options)
